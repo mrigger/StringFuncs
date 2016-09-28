@@ -53,9 +53,16 @@ char * strcatClone(char *dest, char *source) {
 }
 
 //search and returns pointer
-//char * strchr(char *s, char *c) {
-
-//}
+char * strchrClone(char *s, char c) {
+  char *word = s;
+  while (*word != c) {
+    word++;
+  }
+  if (*word == c) {
+    return word;
+  }
+  return 0;
+}
 
 
 int main() {
@@ -128,12 +135,13 @@ int main() {
   printf("value at pointer: %c\n",*where);
 
   printf("------------------\n");
+
   
   char catch2[] = "abrakadabrawalakazam";
   char findme2 = 'w';
   printf("catch2: %s\n",catch2);
   printf("findme2: %c\n",findme2);
-  char *where2 = strchr(catch2,findme2);
+  char *where2 = strchrClone(catch2,findme2);
   printf("Pointer is at: %lu\n",where2);
   printf("value at pointer: %c\n",*where2);
   
