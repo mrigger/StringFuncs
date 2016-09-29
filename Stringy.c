@@ -26,6 +26,19 @@ int strcmpClone(char *str1, char *str2) {
   else {return 0;}
 }
 
+int strncmpClone(char *str1, char *str2, int n) {
+  char *cp1 = str1;
+  char *cp2 = str2;
+  while (*cp1 == *cp2 && n) {
+    cp1++;
+    cp2++;
+    n--;
+  }
+  if (str1 < str2) {return -1;}
+  else if (str1 > str2) {return 1;}
+  else {return 0;}
+}
+
 
 char * strcpyClone(char *dest, const char *src) {
   const char *letter = src;
@@ -83,7 +96,7 @@ int main() {
   printf("apple to itself: %d\n",strcmp(str1,str1));
   printf("apple to april: %d\n",strcmp(str1,str3));
   printf("apple to apothesis: %d\n",strcmp(str1,str4));  
-  printf("-----------------\n");
+  printf("----------------- Mine up next\n");
   printf("apple to itself: %d\n",strcmpClone(str1,str1));
   printf("apple to april: %d\n",strcmpClone(str1,str3));
   printf("apple to apothesis: %d\n",strcmpClone(str1,str4));
@@ -114,7 +127,7 @@ int main() {
   printf("destination: %s\n",destination);
   strcat(destination,source);
   printf("Final product: %s\n",destination);
-  printf("--------------\n");
+  printf("------------------ Mine up next\n");
   char source2[] = " Hello";
   char destination2[] = "Why don't you say";
   printf("source2: %s\n",source2);
@@ -131,10 +144,10 @@ int main() {
   printf("catch: %s\n",catch);
   printf("findme: %c\n",findme);
   char *where = strchr(catch,findme);
-  printf("Pointer is at: %lu\n",where);
+  //printf("Pointer is at: %lu\n",where);
   printf("value at pointer: %c\n",*where);
 
-  printf("------------------\n");
+  printf("------------------ Mine up next\n");
 
   
   char catch2[] = "abrakadabrawalakazam";
@@ -142,7 +155,26 @@ int main() {
   printf("catch2: %s\n",catch2);
   printf("findme2: %c\n",findme2);
   char *where2 = strchrClone(catch2,findme2);
-  printf("Pointer is at: %lu\n",where2);
+  //printf("Pointer is at: %lu\n",where2);
   printf("value at pointer: %c\n",*where2);
-  
+
+  printf("*******************\n\n");
+
+  printf("Testing strncmp:\n");
+  char word1[] = "banana";
+  char word2[] = "bandana";
+  char word3[] = "baidu";
+  printf("banana to bandana up to char 3: %d\n",strncmp(word1,word2,3));
+  printf("banana to bandana up to char 4: %d\n",strncmp(word1,word2,4));
+  printf("bandana to baidu up to char 4: %d\n",strncmp(word2,word3,3));
+  printf("--------------------------- Mine up next\n");
+  char word12[] = "banana";
+  char word22[] = "bandana";
+  char word32[] = "baidu";
+  printf("banana to bandana up to char 3: %d\n",strncmpClone(word12,word22,3));
+  printf("banana to bandana up to char 4: %d\n",strncmpClone(word12,word22,4));
+  printf("bandana to baidu up to char 4: %d\n",strncmpClone(word22,word32,3));
+
+
+  return 0;
 }
