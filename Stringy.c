@@ -34,8 +34,8 @@ int strncmpClone(char *str1, char *str2, int n) {
     cp2++;
     n--;
   }
-  if (str1 < str2) {return -1;}
-  else if (str1 > str2) {return 1;}
+  if (*cp1 < *cp2) {return -1;}
+  else if (*cp1 > *cp2) {return 1;}
   else {return 0;}
 }
 
