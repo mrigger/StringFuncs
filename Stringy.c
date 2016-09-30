@@ -40,8 +40,8 @@ int strncmpClone(char *str1, char *str2, int n) {
 }
 
 
-char * strcpyClone(char *dest, const char *src) {
-  const char *letter = src;
+char * strcpyClone(char *dest, char *source) {
+  char *letter = source;
   char *word = dest;
   while (*letter) {
     *word = *letter;
@@ -51,17 +51,31 @@ char * strcpyClone(char *dest, const char *src) {
   return dest;
 }
 
+
+char * strncpyClone(char *dest, char* source, int n) {
+  char *letter = source;
+  char *word = dest;
+  while (n && *letter) {
+    *word = *letter;
+    word++;
+    letter++;
+  }
+  return dest;
+}
+
+
 char * strcatClone(char *dest, char *source) {
   char *location = dest;
   char *part = source;
   while (*location) {
     location++;
   }
-  while (*source) {
+  while (*part) {
     *location = *part;
     location++;
     part++;    
   }
+  *location = 0;
   return dest;
 }
 
@@ -76,6 +90,7 @@ char * strchrClone(char *s, char c) {
   }
   return 0;
 }
+
 
 
 int main() {
@@ -126,15 +141,14 @@ int main() {
   printf("source: %s\n",source);
   printf("destination: %s\n",destination);
   strcat(destination,source);
-  printf("Final product: %s\n",destination);
+  printf("Final product: %s    :)\n",destination);
   printf("------------------ Mine up next\n");
   char source2[] = " Hello";
   char destination2[] = "Why don't you say";
   printf("source2: %s\n",source2);
   printf("destination2: %s\n",destination2);
   strcat(destination2,source2);
-  printf("Final product: %s\n",destination2);
-
+  printf("Final product: %s    :)\n",destination2);
 
   printf("*************************\n\n");
 
@@ -175,6 +189,22 @@ int main() {
   printf("banana to bandana up to char 4: %d\n",strncmpClone(word12,word22,4));
   printf("bandana to baidu up to char 4: %d\n",strncmpClone(word22,word32,3));
 
+  printf("***********************\n\n");
+
+  printf("Testing strncpy:\n");
+  char copyme[] = "railroad";
+  char crushme[] = "bluecarjunction";
+  printf("copyme (source): %s\n",copyme);
+  printf("crushme (dest): %s\n",crushme);
+  strncpy(crushme,copyme,4);
+  printf("crushme after strncpy 4: %s\n",crushme);
+  printf("-----------------------\n");
+  char copyme2[] = "railroad";
+  char crushme2[] = "bluecarjunction";
+  printf("copyme2 (source): %s\n",copyme2);
+  printf("crushme2 (dest): %s\n",crushme2);
+  strncpy(crushme2,copyme2,4);
+  printf("crushme2 after strncpy 4: %s\n",crushme2);
 
   return 0;
 }
