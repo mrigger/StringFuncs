@@ -79,6 +79,23 @@ char * strcatClone(char *dest, char *source) {
   return dest;
 }
 
+char * strncatClone(char *dest, char * source, int n) {
+  char *location = dest;
+  char *part = source;
+  while (*location) {
+    location++;
+  }
+  while (*part && n) {
+    *location = *part;
+    location++;
+    part++;
+    n--;
+  }
+  *location = 0;
+  return dest;
+}
+
+
 //search and returns pointer
 char * strchrClone(char *s, char c) {
   char *word = s;
@@ -92,14 +109,37 @@ char * strchrClone(char *s, char c) {
 }
 
 
+char * strstrClone(char *s, char *c) {
+  char *word = s;
+  char *check = c;
+  char *wordchar;
+  char *checkchar;
+  while (*word) {
+    if (*word == *check) {
+      *wordchar == *word;
+      *checkchar == *check;
+      while (*wordchar == *checkchar && *wordchar && *checkchar) {
+	checkchar++;
+	wordchar++;
+      }
+      if (!*check) {
+	return word;
+      }
+    }
+    word++;
+  }
+  return 0;
+}
+
+
 
 int main() {
   printf("Testing strlen:\n");
-  printf("length of expend: %d\n",strlen("expend"));
+  printf("length of expend: %lu\n",strlen("expend"));
   printf("length of expend (my copy): %d\n",strlenClone("expend"));
-  printf("length of : %d\n",strlen(""));
+  printf("length of : %lu\n",strlen(""));
   printf("length of (my copy): %d\n",strlenClone(""));
-  printf("length of somethingsuperlong: %d\n",strlen("somethingsuperlong"));
+  printf("length of somethingsuperlong: %lu\n",strlen("somethingsuperlong"));
   printf("length of somethingsuperlong (my copy): %d\n",strlenClone("somethingsuperlong"));
   
   printf("**************************\n\n");
@@ -206,5 +246,44 @@ int main() {
   strncpy(crushme2,copyme2,4);
   printf("crushme2 after strncpy 4: %s\n",crushme2);
 
+
+  printf("****************************\n\n");
+
+  printf("Testing strcat:\n");
+  char sourcey[] = "applebee employee";
+  char destinationy[] = "I am an ";
+  printf("sourcey: %s\n",sourcey);
+  printf("destinationy: %s\n",destinationy);
+  strncat(destinationy,sourcey,5);
+  printf("Final product: %s    :)\n",destinationy);
+  printf("------------------ Mine up next\n");
+  char sourcey2[] = "applebee employee";
+  char destinationy2[] = "I am an ";
+  printf("sourcey2: %s\n",sourcey2);
+  printf("destinationy2: %s\n",destinationy2);
+  strncatClone(destinationy2,sourcey2,5);
+  printf("Final product: %s    :)\n",destinationy2);
+
+
+  printf("*************************\n\n");
+
+  printf("Testing strstr:\n");
+  char catchy[] = "abrakadabrawalakazam";
+  char findmey[] = "kadabra";
+  printf("catchy: %s\n",catchy);
+  printf("findmey: %s\n",findmey);
+  char *wherey = strstr(catchy,findmey);
+  printf("value at pointer: %c\n",*wherey);
+
+  printf("------------------ Mine up next\n");
+
+  
+  char catchy2[] = "abrakadabrawalakazam";
+  char findmey2[] = "kadabra";
+  printf("catchy2: %s\n",catchy2);
+  printf("findmey2: %s\n",findmey2);
+  char *wherey2 = strstrClone(catchy2,findmey2);
+  printf("value at pointer: %c\n",*wherey2);
+  
   return 0;
 }
