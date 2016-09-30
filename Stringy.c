@@ -29,14 +29,14 @@ int strcmpClone(char *str1, char *str2) {
 int strncmpClone(char *str1, char *str2, int n) {
   char *cp1 = str1;
   char *cp2 = str2;
-  while (*cp1 == *cp2 && n) {
+  while (n) {
+    if (*cp1 > *cp2) {return 1;}
+    else if (*cp1 < *cp2) {return -1;}
+    n--;
     cp1++;
     cp2++;
-    n--;
   }
-  if (*cp1 < *cp2) {return -1;}
-  else if (*cp1 > *cp2) {return 1;}
-  else {return 0;}
+  return 0;
 }
 
 
