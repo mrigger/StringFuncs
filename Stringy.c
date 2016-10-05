@@ -112,22 +112,26 @@ char * strchrClone(char *s, char c) {
 char * strstrClone(char *s, char *c) {
   char *word = s;
   char *check = c;
+  //printf("start word: %c\n",*word);
   char *wordchar;
   char *checkchar;
   while (*word) {
+    //printf("word: %c   check: %c\n",*word,*check);
     if (*word == *check) {
-      *wordchar == *word;
-      *checkchar == *check;
+      wordchar = word;
+      checkchar = check;
       while (*wordchar == *checkchar && *wordchar && *checkchar) {
+	//printf("comapre2: %c %c\n",*wordchar,*checkchar);
 	checkchar++;
 	wordchar++;
       }
-      if (!*check) {
+      if (!*checkchar) {
 	return word;
       }
     }
     word++;
   }
+  printf("end loop");
   return 0;
 }
 
@@ -273,7 +277,12 @@ int main() {
   printf("catchy: %s\n",catchy);
   printf("findmey: %s\n",findmey);
   char *wherey = strstr(catchy,findmey);
-  printf("value at pointer: %c\n",*wherey);
+  printf("value at pointer: %c\nString from the value: ",*wherey);
+  while (*wherey) {
+    printf("%c",*wherey);
+    wherey++;
+  }
+  printf("\n");
 
   printf("------------------ Mine up next\n");
 
@@ -283,7 +292,12 @@ int main() {
   printf("catchy2: %s\n",catchy2);
   printf("findmey2: %s\n",findmey2);
   char *wherey2 = strstrClone(catchy2,findmey2);
-  printf("value at pointer: %c\n",*wherey2);
+  printf("value at pointer: %c\nString from the value: ",*wherey2);
+  while (*wherey2) {
+    printf("%c",*wherey2);
+    wherey2++;
+  }
+  printf("\n");
   
   return 0;
 }
