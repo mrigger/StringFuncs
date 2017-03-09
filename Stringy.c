@@ -181,14 +181,14 @@ int main() {
 
   printf("Testing strcat:\n");
   char source[] = " Hello";
-  char destination[] = "Why don't you say";
+  char destination[200] = "Why don't you say";
   printf("source: %s\n",source);
   printf("destination: %s\n",destination);
   strcat(destination,source);
   printf("Final product: %s    :)\n",destination);
   printf("------------------ Mine up next\n");
   char source2[] = " Hello";
-  char destination2[] = "Why don't you say";
+  char destination2[200] = "Why don't you say";
   printf("source2: %s\n",source2);
   printf("destination2: %s\n",destination2);
   strcat(destination2,source2);
@@ -255,14 +255,14 @@ int main() {
 
   printf("Testing strcat:\n");
   char sourcey[] = "applebee employee";
-  char destinationy[] = "I am an ";
+  char destinationy[200] = "I am an ";
   printf("sourcey: %s\n",sourcey);
   printf("destinationy: %s\n",destinationy);
   strncat(destinationy,sourcey,5);
   printf("Final product: %s    :)\n",destinationy);
   printf("------------------ Mine up next\n");
   char sourcey2[] = "applebee employee";
-  char destinationy2[] = "I am an ";
+  char destinationy2[200] = "I am an ";
   printf("sourcey2: %s\n",sourcey2);
   printf("destinationy2: %s\n",destinationy2);
   strncatClone(destinationy2,sourcey2,5);
